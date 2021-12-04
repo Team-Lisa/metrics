@@ -4,13 +4,13 @@ from api.models.track import Track
 class TrackRepository:
 
     @staticmethod
-    def add_track(user):
-        return user.save()
+    def add_track(track):
+        return track.save()
 
     @staticmethod
     def get_track_by_name(value):
-        user = Track.objects(name=value)
-        return user
+        track = Track.objects(name=value)
+        return track
 
     @staticmethod
     def delete_all_track():
