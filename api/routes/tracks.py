@@ -6,6 +6,6 @@ from api.models.responses.track import Track as TrackResponse
 router = APIRouter(tags=["Tracks"])
 
 
-@router.post("/tracks", response_model=TrackResponse)
+@router.post("/tracks", status_code=201, response_model=TrackResponse)
 async def create_user(track: Track):
     return TracksController.create(track)
