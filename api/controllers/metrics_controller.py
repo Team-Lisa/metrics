@@ -22,13 +22,27 @@ class MetricsController:
 
     @staticmethod
     def get_match(name, from_date, to_date):
-        return {
-            "$and": [{"$expr": {"$gte": ["$date", from_date]}},
-                     {"$expr": {"$lte": ["$date", to_date]}}
-                     ],
-            "name": name
-
-        }
+        if len(from_date) == 0 and len(to_date) == 0:
+            return {
+                "name": name
+            }
+        elif len(from_date) == 0:
+            return {
+                "$and": [{"$expr": {"$lte": ["$date", to_date]}}],
+                "name": name
+            }
+        elif len(to_date) == 0:
+            return {
+                "$and": [{"$expr": {"$gte": ["$date", from_date]}}],
+                "name": name
+            }
+        else:
+            return {
+                "$and": [{"$expr": {"$gte": ["$date", from_date]}},
+                         {"$expr": {"$lte": ["$date", to_date]}}
+                         ],
+                "name": name
+            }
 
     @staticmethod
     def add_exam_resolution_time(result, from_date, to_date):
