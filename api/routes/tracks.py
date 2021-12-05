@@ -9,10 +9,3 @@ router = APIRouter(tags=["Tracks"])
 @router.post("/tracks", response_model=TrackResponse)
 async def create_user(track: Track):
     return TracksController.create(track)
-
-
-@router.get("/metrics")
-async def find_user(name: str = ""):
-    return TracksController.find_by_name(name)
-
-
