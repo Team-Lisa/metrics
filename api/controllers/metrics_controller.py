@@ -1,6 +1,7 @@
 from api.models.metrics.exam_resolution_time import ExamResolutionTime
 from api.models.metrics.units_completed import UnitsCompleted
 from api.models.metrics.user_access import UserAccess
+from api.models.metrics.user_frequency import UserFrequency
 from api.repositories.track_repository import TrackRepository
 
 
@@ -17,6 +18,7 @@ class MetricsController:
         MetricsController.add_exam_resolution_time(result, from_date, to_date)
         MetricsController.add_access_per_day(result, from_date, to_date)
         MetricsController.add_units_completed_per_day(result, from_date, to_date)
+        MetricsController.add_user_frequency(result, from_date, to_date)
 
         return {"metrics": result}
 
@@ -88,3 +90,7 @@ class MetricsController:
         ))
 
         result[MetricsController.UNIT_COMPLETED] = UnitsCompleted.parse(units_completed_per_day)
+
+    @staticmethod
+    def add_user_frequency(result, from_date, to_date):
+        result[MetricsController.USER_FREQUENCY] = UserFrequency.parse(from_date, to_date)
