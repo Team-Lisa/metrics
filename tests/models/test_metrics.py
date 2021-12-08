@@ -74,7 +74,7 @@ def test_exam_resolution_time_parse():
 
 
 def test_user_frequency():
-    url = UserService.URL
+    url = UserService.URL + "users"
 
     with requests_mock.Mocker() as m:
         json = {

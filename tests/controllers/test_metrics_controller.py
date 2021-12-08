@@ -25,7 +25,7 @@ def test_get_metrics(init):
     create_track(MetricsController.EXAM_RESOLUTION_TIME, "2021/11/13", {"time": 5.5})
     create_track(MetricsController.EXAM_RESOLUTION_TIME, "2021/11/20", {"time": 4.5})
 
-    url = UserService.URL
+    url = UserService.URL + "users"
 
     with requests_mock.Mocker() as m:
         json = {

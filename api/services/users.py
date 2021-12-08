@@ -9,7 +9,7 @@ class UserService:
 
     @staticmethod
     def get_all_users():
-        response = requests.get(UserService.URL)
+        response = requests.get(UserService.URL + "users")
         status = response.status_code
 
         if 200 <= status < 300:
