@@ -21,6 +21,7 @@ class MetricsContent(BaseModel):
     new_access: List[Access]
     unit_completed: List[Units]
     exam_resolution_time: Time
+    user_frequency: Time
 
 
 class Metrics(BaseModel):
