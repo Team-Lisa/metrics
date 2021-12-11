@@ -13,6 +13,9 @@ class UserFrequency:
         last_connections = UserFrequency.filter_dates(from_date, to_date, last_connections)
         diff_times = UserFrequency.get_diffs(to_date, last_connections)
 
+        if len(diff_times) == 0:
+            return -1
+
         return UserFrequency.avg_days(diff_times)
 
     @staticmethod
@@ -62,6 +65,7 @@ class UserFrequency:
 
     @staticmethod
     def avg_days(diff_times):
+
         total = sum(diff_times)
         total_days = total / (60 * 60 * 24.0)
         return total_days / len(diff_times)
